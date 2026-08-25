@@ -1,3 +1,4 @@
+# Disabled while the illumos branch exercises the illumos cross-build.
 name: c
 on:
   push:

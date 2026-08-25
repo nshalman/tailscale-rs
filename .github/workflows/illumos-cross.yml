@@ -1,0 +1,33 @@
+name: illumos cross-build
+
+on:
+  push:
+    branches:
+      - illumos
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: build (x86_64-unknown-illumos)
+    if: github.ref == 'refs/heads/illumos'
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Cross-build workspace for illumos
+        uses: houseabsolute/actions-rust-cross@85826e468eac832e251ac58f6191ba784db237c8 # v1
+        with:
+          target: x86_64-unknown-illumos
+          toolchain: 1.95.0
+          command: build
+          args: --locked --workspace
+          force-use-cross: true
