@@ -29,5 +29,6 @@ jobs:
           target: x86_64-unknown-illumos
           toolchain: 1.95.0
           command: build
-          args: --locked --workspace
+          # Python bindings require an illumos libpython absent from the cross image.
+          args: --locked --workspace --exclude ts_python
           force-use-cross: true
