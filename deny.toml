@@ -31,5 +31,6 @@ all-features = true
 
 [sources]
 allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+allow-git = ["https://github.com/nshalman/tun-rs"]
 unknown-git = "deny"
 unknown-registry = "deny"

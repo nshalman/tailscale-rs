@@ -150,6 +150,10 @@ ts_transport_tun = { path = "ts_transport_tun", version = "0.5.0" }
 ts_underlay_router = { path = "ts_underlay_router", version = "0.5.0" }
 ts_tunnel = { path = "ts_tunnel", version = "0.5.0" }
 
+[patch.crates-io]
+# Use the illumos STREAMS backend until it is available in a crates.io release.
+tun-rs = { git = "https://github.com/nshalman/tun-rs", branch = "illumos" }
+
 [workspace.lints.rust]
 closure_returning_async_block = "warn"
 let-underscore = "warn"
